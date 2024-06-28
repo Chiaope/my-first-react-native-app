@@ -1,27 +1,45 @@
+import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 export default function App() {
+  const [enteredText, setEnteredText] = useState('')
+  const [toDoList, setToDoList] = useState([])
+
+  function handleGoalTextInput(textInput) {
+    setEnteredText(textInput)
+  }
+
+  function handleAddToDo() {
+    setToDoList((currentToDoList) => [...currentToDoList, enteredText])
+    setEnteredText('')
+  }
+
   return (
+    <KeyboardAwareScrollView>
     <View style={styles.appContainer}>
       <View style={styles.titleContainter}>
         <Text style={styles.titleTextStyle}>To Do List</Text>
       </View>
       <View style={styles.taskContainer}>
-        < TextInput style={styles.inputStyle} placeholder='Give me tasks'/>
-        <Button title='Tap me!!' />
+        < TextInput style={styles.inputStyle} placeholder='Give me tasks' onChangeText={handleGoalTextInput} value={enteredText}/>
+        <Button title='Tap me!!' onPress={handleAddToDo}/>
       </View>
       <View style={styles.listContainer}>
         <Text>List:</Text>
+        {toDoList.map((toDoItem, toDoIndex) => <Text key={toDoIndex}>{toDoItem}</Text>)}
       </View>
     </View>
+    </KeyboardAwareScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    marginVertical: '15%',
-    margin: '5%'
+    paddingTop: '10%',
+    padding: '5%'
   },
   titleContainter: {
     // flex: 1,
