@@ -10,16 +10,21 @@ export default function App() {
         < TextInput style={styles.inputStyle} placeholder='Give me tasks'/>
         <Button title='Tap me!!' />
       </View>
+      <View style={styles.listContainer}>
+        <Text>List:</Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   appContainer: {
+    flex: 1,
     marginVertical: '15%',
     margin: '5%'
   },
   titleContainter: {
+    // flex: 1,
     alignItems: 'center',
     padding: '5%'
   },
@@ -27,16 +32,21 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   taskContainer: {
-    // borderWidth: 1,
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '1%'
+    padding: '1%',
+    borderBottomWidth: 1,
+    marginBottom: '5%'
   },
   inputStyle: {
     borderWidth: 1,
     width: '80%',
     paddingHorizontal: '2%'
+  },
+  listContainer: {
+    flex: 15
   },
   container: {
     flex: 1,
