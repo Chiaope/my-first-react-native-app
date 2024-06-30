@@ -29,14 +29,15 @@ const styles = StyleSheet.create({
     inputTaskContainer: {
         flex: 1,
         flexDirection: 'row',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'space-between',
         borderBottomWidth: 1,
-        marginBottom: '5%'
+        paddingBottom: '2%'
     },
     inputStyle: {
         borderWidth: 1,
         width: '80%',
+        height: '80%',
         paddingHorizontal: '2%'
     },
 })
