@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default function App() {
   const [enteredText, setEnteredText] = useState('')
@@ -17,21 +16,29 @@ export default function App() {
   }
 
   return (
-    <KeyboardAwareScrollView>
     <View style={styles.appContainer}>
       <View style={styles.titleContainter}>
         <Text style={styles.titleTextStyle}>To Do List</Text>
       </View>
-      <View style={styles.taskContainer}>
-        < TextInput style={styles.inputStyle} placeholder='Give me tasks' onChangeText={handleGoalTextInput} value={enteredText}/>
-        <Button title='Tap me!!' onPress={handleAddToDo}/>
+      <View style={styles.contentContainer}>
+        <View style={styles.inputTaskContainer}>
+          < TextInput style={styles.inputStyle} placeholder='Give me tasks' onChangeText={handleGoalTextInput} value={enteredText} />
+          <Button title='Tap me!!' onPress={handleAddToDo} />
+        </View>
+        <View style={styles.listContainer}>
+          <Text>List:</Text>
+          {
+            toDoList.map(
+              (toDoItem, toDoIndex) =>
+                <View key={toDoIndex} style={styles.toDoListViewContainer}>
+                  <Text style={styles.toDoListTextStyle}>{toDoItem}</Text>
+                </View>
+            )
+          }
+        </View>
       </View>
-      <View style={styles.listContainer}>
-        <Text>List:</Text>
-        {toDoList.map((toDoItem, toDoIndex) => <Text key={toDoIndex}>{toDoItem}</Text>)}
-      </View>
+
     </View>
-    </KeyboardAwareScrollView>
   );
 }
 
@@ -42,19 +49,22 @@ const styles = StyleSheet.create({
     padding: '5%'
   },
   titleContainter: {
-    // flex: 1,
+    flex: 1,
     alignItems: 'center',
     padding: '5%'
   },
   titleTextStyle: {
     fontSize: 30
   },
-  taskContainer: {
+  contentContainer: {
+    flex: 15,
+    justifyContent: ''
+  },
+  inputTaskContainer: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'space-between',
-    padding: '1%',
     borderBottomWidth: 1,
     marginBottom: '5%'
   },
@@ -64,12 +74,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: '2%'
   },
   listContainer: {
-    flex: 15
+    flex: 12,
   },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  toDoListViewContainer: {
+    backgroundColor: 'darkblue',
+    borderWidth: 1,
+    marginVertical: 5,
+    padding: 5,
+    borderRadius: 5
   },
+  toDoListTextStyle: {
+    color: 'white'
+  } 
 });
