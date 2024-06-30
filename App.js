@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 
 
 export default function App() {
@@ -29,19 +29,16 @@ export default function App() {
           <Button title='Tap me!!' onPress={handleAddToDo} />
         </View>
         <View style={styles.listContainer}>
-          <Text style={{fontSize: 25, paddingBottom: '5%'}}>List:</Text>
-          <View>
-            <ScrollView>
-              {
-                toDoList.map(
-                  (toDoItem, toDoIndex) =>
-                    <View key={toDoIndex} style={styles.toDoListViewContainer}>
-                      <Text style={styles.toDoListTextStyle}>{toDoItem}</Text>
-                    </View>
-                )
-              }
-            </ScrollView>
-          </View>
+          <Text style={{ fontSize: 25, paddingBottom: '5%' }}>List:</Text>
+          <FlatList
+            data={toDoList}
+            renderItem={(itemData) => {
+              return (
+                <View style={styles.toDoListViewContainer}>
+                  <Text style={styles.toDoListTextStyle}>{itemData.item}</Text>
+                </View>
+              )
+            }} />
         </View>
       </View>
 
