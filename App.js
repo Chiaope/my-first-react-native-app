@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 
 export default function App() {
@@ -11,8 +11,11 @@ export default function App() {
   }
 
   function handleAddToDo() {
-    setToDoList((currentToDoList) => [...currentToDoList, enteredText])
-    setEnteredText('')
+    if (enteredText != '') {
+      setToDoList((currentToDoList) => [...currentToDoList, enteredText])
+      setEnteredText('')
+    }
+
   }
 
   return (
@@ -26,15 +29,19 @@ export default function App() {
           <Button title='Tap me!!' onPress={handleAddToDo} />
         </View>
         <View style={styles.listContainer}>
-          <Text>List:</Text>
-          {
-            toDoList.map(
-              (toDoItem, toDoIndex) =>
-                <View key={toDoIndex} style={styles.toDoListViewContainer}>
-                  <Text style={styles.toDoListTextStyle}>{toDoItem}</Text>
-                </View>
-            )
-          }
+          <Text style={{fontSize: 25, paddingBottom: '5%'}}>List:</Text>
+          <View>
+            <ScrollView>
+              {
+                toDoList.map(
+                  (toDoItem, toDoIndex) =>
+                    <View key={toDoIndex} style={styles.toDoListViewContainer}>
+                      <Text style={styles.toDoListTextStyle}>{toDoItem}</Text>
+                    </View>
+                )
+              }
+            </ScrollView>
+          </View>
         </View>
       </View>
 
@@ -85,5 +92,5 @@ const styles = StyleSheet.create({
   },
   toDoListTextStyle: {
     color: 'white'
-  } 
+  }
 });
