@@ -2,11 +2,11 @@ import { Pressable, StyleSheet, Text, View } from "react-native"
 
 function ToDoItem(props) {
     return (
-        <Pressable onPress={() => props.onPress(props.id)}>
-            <View style={styles.toDoListItemContainer}>
+        <View style={styles.toDoListItemContainer}>
+            <Pressable onPress={() => props.onPress(props.id)} android_ripple={{ color: 'grey' }}>
                 <Text style={styles.toDoListTextStyle}>{props.text}</Text>
-            </View>
-        </Pressable>
+            </Pressable>
+        </View>
     )
 }
 
@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'darkblue',
         borderWidth: 1,
         marginVertical: 5,
-        padding: 5,
         borderRadius: 5
     },
     toDoListTextStyle: {
-        color: 'white'
+        color: 'white',
+        padding: 5,
     }
 })
