@@ -7,13 +7,18 @@ import { useState } from "react";
 function ToDoListPage() {
     const [toDoList, setToDoList] = useState([])
 
+    function deleteItem(id) {
+        console.log(id)
+        setToDoList((currentToDoList) => currentToDoList.filter((toDoItem) => {return (toDoItem.id !== id)}))
+    }
+
     return (
         <View style={styles.appContainer}>
             <Title title='To Do List' />
             <View style={styles.contentContainer}>
                 <InputToDoTask updateList={setToDoList} />
                 <View style={styles.toDoListContainer}>
-                    <ToDoList toDoList={toDoList} />
+                    <ToDoList toDoList={toDoList} onPress={deleteItem} />
                 </View>
             </View>
 

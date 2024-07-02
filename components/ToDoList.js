@@ -1,4 +1,5 @@
-import { FlatList, StyleSheet, Text, View } from "react-native"
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native"
+import ToDoItem from "./ToDoItem"
 
 function ToDoList(props) {
     return (
@@ -8,9 +9,7 @@ function ToDoList(props) {
                 data={props.toDoList}
                 renderItem={(itemData) => {
                     return (
-                        <View style={styles.toDoListItemContainer}>
-                            <Text style={styles.toDoListTextStyle}>{itemData.item}</Text>
-                        </View>
+                        <ToDoItem onPress={props.onPress} id={itemData.item.id} text={itemData.item.text} />
                     )
                 }} />
         </View>
@@ -28,14 +27,4 @@ const styles = StyleSheet.create({
         fontSize: 25,
         paddingBottom: '5%'
     },
-    toDoListItemContainer: {
-        backgroundColor: 'darkblue',
-        borderWidth: 1,
-        marginVertical: 5,
-        padding: 5,
-        borderRadius: 5
-    },
-    toDoListTextStyle: {
-        color: 'white'
-    }
 })

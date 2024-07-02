@@ -10,7 +10,7 @@ function InputToDoTask(props) {
 
     function handleAddToDo() {
         if (enteredText != '') {
-            props.updateList((currentToDoList) => [...currentToDoList, enteredText])
+            props.updateList((currentToDoList) => [...currentToDoList, {text: enteredText, id: Math.random()}])
             setEnteredText('')
         }
     }
