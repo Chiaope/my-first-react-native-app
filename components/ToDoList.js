@@ -9,7 +9,7 @@ function ToDoList(props) {
                 data={props.toDoList}
                 renderItem={(itemData) => {
                     return (
-                        <ToDoItem onPress={props.onPress} id={itemData.item.id} text={itemData.item.text} />
+                        <ToDoItem onPress={props.onPress} id={itemData.item.id} text={itemData.item.text} setToDoList={props.setToDoList} />
                     )
                 }} />
         </View>

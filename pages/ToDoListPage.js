@@ -18,7 +18,7 @@ function ToDoListPage() {
             <View style={styles.contentContainer}>
                 <InputToDoTask updateList={setToDoList} />
                 <View style={styles.toDoListContainer}>
-                    <ToDoList toDoList={toDoList} onPress={deleteItem} />
+                    <ToDoList toDoList={toDoList} setToDoList={setToDoList} />
                 </View>
             </View>
 

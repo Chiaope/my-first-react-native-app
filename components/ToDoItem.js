@@ -1,9 +1,18 @@
 import { Pressable, StyleSheet, Text, View } from "react-native"
+import ToDoListDeleteItemModal from "./ToDoListDeleteItemModal"
+import { useState } from "react"
 
 function ToDoItem(props) {
+    const [modalVisible, setModalVisible] = useState(false)
+
+    function showModal() {
+        setModalVisible(true)
+    }
+
     return (
         <View style={styles.toDoListItemContainer}>
-            <Pressable onPress={() => props.onPress(props.id)} android_ripple={{color: 'grey'}} style={(pressData) => {pressData.pressed && console.log('pressed')}}>
+            <ToDoListDeleteItemModal modalVisible={modalVisible} setModalVisible={setModalVisible} setToDoList={props.setToDoList} id={props.id}/>
+            <Pressable onPress={showModal} android_ripple={{color: 'grey'}} style={(pressData) => {pressData.pressed && console.log('pressed')}}>
                 <Text style={styles.toDoListTextStyle}>{props.text}</Text>
             </Pressable>
         </View>
