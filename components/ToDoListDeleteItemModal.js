@@ -1,4 +1,4 @@
-import { Button, Modal, StyleSheet, View } from "react-native"
+import { Button, Modal, StyleSheet, Text, View } from "react-native"
 
 function ToDoListDeleteItemModal(props) {
     function closeModal() {
@@ -14,11 +14,12 @@ function ToDoListDeleteItemModal(props) {
     return (
         <Modal visible={props.modalVisible} animationType="slide">
             <View style={styles.modalView}>
-                <View style={styles.buttonView}>
-                    <Button title="Cancel" onPress={closeModal} />
-                </View>
+                <Text style={styles.textStyle}>Confirm delete?</Text>
                 <View style={styles.buttonView}>
                     <Button title="Delete" onPress={() => {deleteItem(props.id)}}/>
+                </View>
+                <View style={styles.buttonView}>
+                    <Button title="Cancel" onPress={closeModal} />
                 </View>
             </View>
         </Modal>
@@ -33,8 +34,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
+    textStyle: {
+        fontSize: 25,
+        margin: "2%"
+    },
     buttonView: {
-        margin: "2%",
+        margin: "1%",
         width: "50%",
     }
 })
