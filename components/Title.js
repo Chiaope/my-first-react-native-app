@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     titleContainter: {
         flex: 1,
         alignItems: 'center',
-        padding: '5%'
+        justifyContent: 'center'
     },
     titleTextStyle: {
         fontSize: 30

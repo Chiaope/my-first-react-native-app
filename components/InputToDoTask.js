@@ -18,7 +18,7 @@ function InputToDoTask(props) {
     return(
         <View style={styles.inputTaskContainer}>
             < TextInput style={styles.inputStyle} placeholder='Give me tasks' onChangeText={handleGoalTextInput} value={enteredText} />
-            <Button title='Tap me!!' onPress={handleAddToDo} />
+            <Button title='Submit' onPress={handleAddToDo} />
         </View>
     )
 }
